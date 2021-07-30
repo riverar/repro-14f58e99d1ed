@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.Windows.WinmdGenerator/0.2.118-preview">
+    
+    <PropertyGroup>
+        <OutputWinmd>test.winmd</OutputWinmd>
+        <WinmdVersion>1.0.0.0</WinmdVersion>
+        <GenerateAssemblyVersionInfo>false</GenerateAssemblyVersionInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Headers Include="*.h"/>
+        <Libs Include="*.lib"/>
+
+        <ImportLibs Include="@(Libs)"/>
+        <Partition Include="main.cpp">
+            <TraverseFiles>@(Headers)</TraverseFiles>
+            <Namespace>A.B.C.D</Namespace>
+        </Partition>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ProjectReunion.DWrite" Version="0.5.6" GeneratePathProperty="true"/>
+    </ItemGroup>
+
+</Project>
